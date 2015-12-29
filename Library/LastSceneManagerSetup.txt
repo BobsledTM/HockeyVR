@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Hockey/Scenes/Hockey.unity
+  isLoaded: 1
+  isActive: 1

@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Hockey\Scripts\PlayerController.cs">
+    <Files>
+      <File FileName="Assets\Hockey\Scripts\players\TestCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hockey\Scripts\players\Blocker.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hockey\Scripts\players\Steerer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hockey\Scripts\players\Shooter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hockey\Scripts\Framerate.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hockey\Scripts\PlayerController.cs" Line="16" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
