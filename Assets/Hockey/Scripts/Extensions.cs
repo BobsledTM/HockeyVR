@@ -12,4 +12,12 @@ public static class Extensions
 			eventHandler(sender, args);
 		}
 	}
+
+	public static void Raise<T>(this EventHandler<T> eventHandler, System.Object sender, T args) where T : EventArgs
+	{
+		if (eventHandler != null)
+		{
+			eventHandler(sender, args);
+		}
+	}
 }

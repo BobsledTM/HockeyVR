@@ -15,7 +15,7 @@ public class GameLogicManager : MonoBehaviour
 	private ShooterController _shooterController;
 
 	[SerializeField]
-	private PlayerController _playerController;
+	private Player _player;
 
 	[SerializeField]
 	private GoalTrigger _goalTrigger;
@@ -29,27 +29,31 @@ public class GameLogicManager : MonoBehaviour
 	private void OnEnable()
 	{
 		_shooterController.ShootPuckEvent += OnShootPuckEvent;
-		_playerController.SavePuckEvent += OnSavePuckEvent;
+		_player.SavePuckEvent += OnSavePuckEvent;
 		_goalTrigger.ScorePuckEvent += OnScorePuckEvent;
 	}
 
 	private void OnDisable()
 	{
 		_shooterController.ShootPuckEvent -= OnShootPuckEvent;
-		_playerController.SavePuckEvent -= OnSavePuckEvent;
+		_player.SavePuckEvent -= OnSavePuckEvent;
 		_goalTrigger.ScorePuckEvent -= OnScorePuckEvent;
 	}
 
-	private void OnShootPuckEvent(System.Object sender, EventArgs args)
+	private void OnShootPuckEvent(System.Object sender, ShootPuckArgs args)
 	{
 		PlayRandomSound(sender, _puckSlapSounds);
 
 		ShootPuckEvent.Raise(sender, args);
+
+		_player.ListenToShot(args.Puck);
 	}
 
 	private void OnSavePuckEvent(System.Object sender, EventArgs args)
 	{
 		PlayRandomSound(sender, _hitPadsSounds);
+
+		_player.StopListeningToShot();
 
 		SavePuckEvent.Raise(sender, args);
 	}
@@ -57,6 +61,8 @@ public class GameLogicManager : MonoBehaviour
 	private void OnScorePuckEvent(System.Object sender, EventArgs args)
 	{
 		ScorePuckEvent.Raise(sender, args);
+
+		_player.StopListeningToShot();
 	}
 
 	private void PlayRandomSound(System.Object sender, AudioSource[] audioSources)

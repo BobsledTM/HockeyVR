@@ -41,6 +41,14 @@ namespace Projectile
 			}
 		}
 
+		/// <summary>
+		/// Gets the next projectile in the queue.
+		/// </summary>
+		public IProjectile Peek()
+		{
+			return _projectileQueue.Peek();
+		}
+
 		public void AddToShootQueue(IProjectile[] projectiles)
 		{
 			for(int i = 0; i < projectiles.Length; ++i)

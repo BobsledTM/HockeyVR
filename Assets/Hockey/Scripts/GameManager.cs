@@ -11,9 +11,27 @@ public class GameManager : MonoBehaviour
 	private UIManager _uiManager;
 
 	[SerializeField]
+	private GameStarter _gameStarter;
+
+	[SerializeField]
 	private GameLogicManager _gameLogicManager;
 
 	private void Awake()
+	{
+		
+	}
+
+	private void OnEnable()
+	{
+
+	}
+
+	private void OnDisable()
+	{
+
+	}
+
+	private void OnStartGame()
 	{
 		_statManager = new StatManager(_gameLogicManager);
 		_uiManager.Init(_statManager);

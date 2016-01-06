@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using Projectile;
 using System;
 
 [RequireComponent(typeof(PlayerSteerer))]
 public class PlayerController : MonoBehaviour 
 {
-	public event EventHandler SavePuckEvent;
-
 	private PlayerSteerer _playerSteerer;
 
 	private void Awake()
@@ -19,22 +16,10 @@ public class PlayerController : MonoBehaviour
 		HandlePlayerInput();
 	}
 
-	private void OnCollisionEvent(System.Object sender, EventArgs args)
-	{
-		ColliderArgs colliderArgs = args as ColliderArgs;
-		if(colliderArgs != null)
-		{
-			if(colliderArgs.Collision.gameObject.GetComponent<Puck>() != null)
-			{
-				SavePuckEvent.Raise(sender, args);
-			}
-		}
-	}
-
 	private void HandlePlayerInput()
 	{
 		bool leftRightInput = false;
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			_playerSteerer.MoveLeft();
 			leftRightInput = true;
@@ -59,6 +44,5 @@ public class PlayerController : MonoBehaviour
 		{
 			_playerSteerer.MoveVerticalToOrigin();
 		}
-
 	}
 }

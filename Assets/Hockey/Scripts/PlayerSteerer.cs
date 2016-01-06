@@ -53,8 +53,8 @@ public class PlayerSteerer : MonoBehaviour
 		_currentTarget.y = _origin.y;
 	}
 
-	private void Move(Vector3 destination)
+	private void Move(Vector3 target)
 	{
-		transform.position = Vector3.Lerp(transform.position, destination, _speed * Time.deltaTime);
+		transform.position = Vector3.Lerp(transform.position, target, _speed * Time.deltaTime);
 	}
 }

@@ -30,7 +30,7 @@ public class StatManager
 	private void OnScorePuckEvent(System.Object sender, EventArgs args)
 	{
 		TotalGoals++;
-		SavePuckEvent.Raise(sender, args);
+		ScorePuckEvent.Raise(sender, args);
 	}
 
 	private void OnShootPuckEvent(System.Object sender, EventArgs args)

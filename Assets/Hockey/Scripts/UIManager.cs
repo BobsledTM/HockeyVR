@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField]
 	private UISaves _uiSaves;
 
+	[SerializeField]
+	private AudioSource _savePuckUISound;
+
 	public void Init(StatManager statManager)
 	{
 		_statManager = statManager;
@@ -29,5 +32,6 @@ public class UIManager : MonoBehaviour
 	private void OnSavePuckEvent(System.Object sender, EventArgs args)
 	{
 		_uiSaves.UpdateText(_statManager.TotalSaves, _statManager.TotalShots);
+		_savePuckUISound.Play();
 	}
 }

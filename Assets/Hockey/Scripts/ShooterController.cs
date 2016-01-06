@@ -4,11 +4,24 @@ using System;
 namespace Hockey
 {
 	/// <summary>
+	/// Arguments for shooting a puck.
+	/// </summary>
+	public class ShootPuckArgs : EventArgs
+	{
+		public Puck Puck { get; private set; }
+
+		public ShootPuckArgs(Puck puck)
+		{
+			Puck = puck;
+		}
+	}
+
+	/// <summary>
 	/// Controls which shooter shoots and when.
 	/// </summary>
 	public class ShooterController : MonoBehaviour
 	{
-		public event EventHandler ShootPuckEvent;
+		public event EventHandler<ShootPuckArgs> ShootPuckEvent;
 
 		[SerializeField]
 		private Shooter[] _shooters;
@@ -34,9 +47,10 @@ namespace Hockey
 			if (_timer <= 0)
 			{
 				Shooter randomShooter = GetRandomShooter();
-				randomShooter.AddToShootQueue(GetNextPuck());
+				Puck nextPuck = GetNextPuck();
+				randomShooter.AddToShootQueue(nextPuck);
 				randomShooter.Shoot();
-				ShootPuckEvent.Raise(randomShooter, EventArgs.Empty);
+				ShootPuckEvent.Raise<ShootPuckArgs>(randomShooter, new ShootPuckArgs(nextPuck));
 				_timer = _shootInterval;
 			}
 		}
