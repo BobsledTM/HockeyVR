@@ -20,8 +20,11 @@ public class UIManager : MonoBehaviour
 
 	private void OnDisable()
 	{
-		_statManager.ScorePuckEvent -= OnScorePuckEvent;
-		_statManager.SavePuckEvent -= OnSavePuckEvent;
+		if (_statManager != null)
+		{
+			_statManager.ScorePuckEvent -= OnScorePuckEvent;
+			_statManager.SavePuckEvent -= OnSavePuckEvent;
+		}
 	}
 
 	private void OnScorePuckEvent(System.Object sender, EventArgs args)
